@@ -10,6 +10,36 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    public enum Jogada{
+        PEDRA(0), PAPEL(1), TESOURA(3);
+
+        public final int valor;
+
+        Jogada(int valor){
+            this.valor = valor;
+        }
+    }
+
+    public enum Resultado{
+        DERROTA(-1), EMPATE(0), VITORIA(1);
+
+        private final int valor;
+
+        Resultado(int valor){
+            this.valor = valor;
+        }
+    }
+
+    public static final Resultado TABELA [] [] = {
+            {Resultado.EMPATE, Resultado.DERROTA, Resultado.VITORIA},
+            {Resultado.VITORIA, Resultado.EMPATE, Resultado.DERROTA},
+            {Resultado.DERROTA, Resultado.VITORIA, Resultado.EMPATE}
+
+    };
+
+    private Integer pontosComputador = 0;
+    private Integer pontosHumano = 0;
+
     private Button buttonPedra;
     private Button buttonPapel;
     private Button buttonTesoura;
@@ -39,14 +69,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonPedraClick(View view){
-
+        rodada(Jogada.PEDRA);
     }
 
     public void buttonPapelClick(View view){
-
+        rodada(Jogada.PAPEL);
     }
 
     public void buttonTesouraClick(View view){
+        rodada(Jogada.TESOURA);
+    }
+
+    public void rodada(Jogada jogada){
 
     }
 }
