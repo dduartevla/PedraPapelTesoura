@@ -71,6 +71,7 @@
         android:id="@+id/buttonPedra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="buttonPedraClick"
         android:text="Pedra"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonPapel"
         app:layout_constraintEnd_toStartOf="@+id/buttonPapel"
@@ -81,6 +82,7 @@
         android:id="@+id/buttonPapel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="buttonPapelClick"
         android:text="Papel"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonTesoura"
         app:layout_constraintEnd_toStartOf="@+id/buttonTesoura"
@@ -92,6 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:onClick="buttonTesouraClick"
         android:text="Tesoura"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -99,7 +102,7 @@
         app:layout_constraintTop_toBottomOf="@+id/progressBarHumano" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewStatus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -108,7 +111,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:gravity="center"
-        android:text="Escolha uma opção:"
+        android:text="Escolha uma opção..."
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
