@@ -1,7 +1,9 @@
 package ufjf.dcc.debora.pedrapapeltesoura;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -132,5 +134,22 @@ public class MainActivity extends AppCompatActivity {
         progressBarComputador.setProgress(pontosComputador);
         progressBarHumano.setProgress(pontosHumano);
 
+    }
+
+    public void TextViewStatusClick(View view){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle("Reiniciar o torneio");
+        dialogBuilder.setMessage("Deseja reiniciar o torneio?");
+        dialogBuilder.setPositiveButton("Reiniciar",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        iniciaTorneio();
+                        atualizaStatus();
+                    }
+                }
+        );
+        dialogBuilder.create();
+        dialogBuilder.show();
     }
 }
