@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -90,15 +91,18 @@ public class MainActivity extends AppCompatActivity {
         switch (TABELA[jogada.valor][jogadaComputador.valor]){
             case VITORIA:
                 pontosHumano += 3;
+                Toast.makeText(this,"O humano ganhou!",Toast.LENGTH_SHORT).show();
                 break;
 
             case EMPATE:
                 pontosComputador ++;
+                Toast.makeText(this,"Houve um empate!",Toast.LENGTH_SHORT).show();
                 pontosHumano ++;
                 break;
 
             case DERROTA:
                 pontosComputador +=3;
+                Toast.makeText(this,"O computador ganhou!",Toast.LENGTH_SHORT).show();
                 break;
         }
         atualizaStatus();
@@ -107,5 +111,26 @@ public class MainActivity extends AppCompatActivity {
     private void atualizaStatus(){
         progressBarComputador.setProgress(pontosComputador);
         progressBarHumano.setProgress(pontosHumano);
+
+        if (pontosHumano <15 && pontosComputador <15){
+            textViewStatus.setText("Escolha uma opção...");
+        } else if (pontosHumano >=15 && pontosComputador<15){
+            textViewStatus.setText("Humano Venceu!");
+            iniciaTorneio();
+        } else if (pontosHumano <15 && pontosComputador>=15){
+            textViewStatus.setText("Computador Venceu");
+            iniciaTorneio();
+        } else {
+            textViewStatus.setText("Empate");
+            iniciaTorneio();
+        }
+    }
+
+    public void iniciaTorneio(){
+        pontosHumano = 0;
+        pontosComputador = 0;
+        progressBarComputador.setProgress(pontosComputador);
+        progressBarHumano.setProgress(pontosHumano);
+
     }
 }
