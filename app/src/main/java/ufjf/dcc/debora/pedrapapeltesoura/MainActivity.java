@@ -15,8 +15,24 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Integer pontosComputador = 0;
+    private Integer pontosHumano = 0;
+
+    private Button buttonPedra;
+    private Button buttonPapel;
+    private Button buttonTesoura;
+    private Button buttonLagarto;
+    private Button buttonSpock;
+
+    private ProgressBar progressBarComputador;
+    private ProgressBar progressBarHumano;
+
+    private TextView textViewStatus;
+
+    private Random dado = new Random();
+
     public enum Jogada{
-        PEDRA(0), PAPEL(1), TESOURA(2);
+        PEDRA(0), PAPEL(1), TESOURA(2), LAGARTO(3), SPOCK(4);
 
         public final int valor;
 
@@ -36,25 +52,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static final Resultado TABELA [] [] = {
-            {Resultado.EMPATE, Resultado.DERROTA, Resultado.VITORIA},
-            {Resultado.VITORIA, Resultado.EMPATE, Resultado.DERROTA},
-            {Resultado.DERROTA, Resultado.VITORIA, Resultado.EMPATE}
+            {Resultado.EMPATE, Resultado.DERROTA, Resultado.VITORIA, Resultado.VITORIA, Resultado.DERROTA},
+            {Resultado.VITORIA, Resultado.EMPATE, Resultado.DERROTA, Resultado.DERROTA, Resultado.VITORIA},
+            {Resultado.DERROTA, Resultado.VITORIA, Resultado.EMPATE, Resultado.VITORIA, Resultado.DERROTA},
+            {Resultado.DERROTA, Resultado.VITORIA, Resultado.DERROTA, Resultado.EMPATE, Resultado.VITORIA},
+            {Resultado.VITORIA, Resultado.DERROTA, Resultado.VITORIA, Resultado.DERROTA, Resultado.EMPATE},
 
     };
-
-    private Integer pontosComputador = 0;
-    private Integer pontosHumano = 0;
-
-    private Button buttonPedra;
-    private Button buttonPapel;
-    private Button buttonTesoura;
-
-    private ProgressBar progressBarComputador;
-    private ProgressBar progressBarHumano;
-
-    private TextView textViewStatus;
-
-    private Random dado = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         buttonPapel = findViewById(R.id.buttonPapel);
         buttonPedra = findViewById(R.id.buttonPedra);
         buttonTesoura = findViewById(R.id.buttonTesoura);
+        buttonLagarto = findViewById(R.id.buttonLagarto);
+        buttonSpock = findViewById(R.id.buttonSpock);
 
         //Componentes de Saída
         progressBarComputador = findViewById(R.id.progressBarComputador);
@@ -87,10 +93,15 @@ public class MainActivity extends AppCompatActivity {
         rodada(Jogada.TESOURA);
     }
 
+    public void buttonLagartoClick(View view) {rodada(Jogada.LAGARTO);}
+
+    public void buttonSpockClick(View view) {rodada(Jogada.SPOCK);}
+
 
 
     public void rodada(Jogada jogada){
-        Jogada jogadaComputador = Jogada.values()[dado.nextInt(3)];
+        Jogada jogadaComputador = Jogada.values()[dado.nextInt(5)];
+        Toast.makeText(this,"O computador jogou: " + jogadaComputador.name(),Toast.LENGTH_SHORT).show();
 
         switch (TABELA[jogada.valor][jogadaComputador.valor]){
             case VITORIA:
