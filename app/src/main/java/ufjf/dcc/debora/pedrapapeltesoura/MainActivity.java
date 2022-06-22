@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
         rodada(Jogada.TESOURA);
     }
 
+
+
     public void rodada(Jogada jogada){
         Jogada jogadaComputador = Jogada.values()[dado.nextInt(3)];
 
