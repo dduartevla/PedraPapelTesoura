@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
             case EMPATE:
                 pontosComputador ++;
-                Toast.makeText(this,"Houve um empate!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Empate!",Toast.LENGTH_SHORT).show();
                 pontosHumano ++;
                 break;
 
